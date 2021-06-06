@@ -14,8 +14,8 @@ public class Money extends JPanel {
 	private AnimalPanel ap;
 
 	private JLabel lbMoney = new JLabel("");
-	public int money;
-	public int ResultMoney;
+	public float money;
+	public float ResultMoney;
 	private JLabel imgMoney = new JLabel(new ImageIcon(getClass().getResource("Money.png")));
 
 	public Money() {
@@ -35,21 +35,23 @@ public class Money extends JPanel {
 
 	public void update(int count, int index, int qntd) {
 
+		money = 100;
+		
 		switch (index) {
 		case 0:
 			money += count;
 			break;
 		case 1:
-			money += count * 10;
+			money += count * 1.5f;
 			break;
 		case 2:
-			money += count * 20;
+			money += count * 2f;
 			break;
 		case 3:
-			money += count * 30;
+			money += count * 3.5;
 			break;
 		case 4:
-			money += count * 40;
+			money += count * 4f;
 			break;
 		}
 		ResultMoney += (money * qntd);
@@ -60,7 +62,7 @@ public class Money extends JPanel {
 
 	}
 	
-	public int getMoney() {
+	public float getMoney() {
 		return ResultMoney;
 
 	}
