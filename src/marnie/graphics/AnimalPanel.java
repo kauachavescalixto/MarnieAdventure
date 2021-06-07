@@ -30,12 +30,12 @@ public class AnimalPanel extends JPanel {
 	private JLabel BG = new JLabel(new ImageIcon(getClass().getResource("BGItem371X129.png")));
 
 	private JLabel locked_BG = new JLabel(new ImageIcon(getClass().getResource("BGItemLocked371X129.png")));
-	public JButton unlockBt;
+	public JButton unlockBt = new JButton();
 	private JLabel unlockLb;
 
 	private JLabel comprarLb;
 	private int count = 0;
-	public JButton comprarBt = new JButton();;
+	public JButton comprarBt = new JButton();
 	private JLabel name;
 	private JPanel alignName;
 	private JLabel qntd;
@@ -114,7 +114,6 @@ public class AnimalPanel extends JPanel {
 		bar.setOpaque(false);
 		bar.setBorder(BorderFactory.createLineBorder(new Color(225, 110, 45, 50)));
 
-		unlockBt = new JButton();
 		unlockBt.setSize(108, 24);
 		unlockBt.setLocation(w - 125, 60);
 		unlockBt.setContentAreaFilled(false);
@@ -289,7 +288,6 @@ public class AnimalPanel extends JPanel {
 					}
 
 					qntd.setText("x" + intQntd);
-					GamePanel.money.updateMoney(precos[index]);
 				}
 			}
 		});

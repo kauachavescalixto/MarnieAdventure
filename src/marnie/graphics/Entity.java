@@ -65,7 +65,7 @@ public class Entity extends JLabel {
 
 	public void move() {
 
-		t = new Timer(50, new ActionListener() {
+		t = new Timer(80, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

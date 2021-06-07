@@ -79,9 +79,9 @@ public class UsersDAO {
 				st.setInt(8, users.getLogin());
 				st.setInt(9, users.getId());
 			} else if (operacao == EXCLUSAO) {
-				sql = "delete from tb_jogo where id =?";
+				sql = "delete from tb_jogo where nome =?";
 				st = bd.c.prepareStatement(sql);
-				st.setInt(1, users.getId());
+				st.setString(1, users.getNome());
 			}
 			if (st.executeUpdate() == 0) {
 				men = "Falha na operação";

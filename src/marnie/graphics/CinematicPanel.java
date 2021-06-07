@@ -103,7 +103,7 @@ public class CinematicPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				timerCount++;
 				if (timerCount >= 10) {
-					y -= 10;
+					y -= 1;
 					BG.setLocation(x, y);
 					repaint();
 					if (y == -500) {

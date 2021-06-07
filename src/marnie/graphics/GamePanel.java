@@ -285,11 +285,7 @@ public class GamePanel extends JPanel {
 				System.exit(0);
 			}
 		});
-		try {
-
-		} catch (NullPointerException e) {
-			// TODO: handle exception
-		}
+		
 		ap[0].comprarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (money.getMoney() >= precos[0]) {
@@ -297,6 +293,7 @@ public class GamePanel extends JPanel {
 					random2 = (int) (Math.random() * 300);
 					rancho.add(new Entity(0, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[0]);
 				}
 			}
 		});
@@ -307,16 +304,18 @@ public class GamePanel extends JPanel {
 					random2 = (int) (Math.random() * 300);
 					rancho.add(new Entity(1, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[1]);
 				}
 			}
 		});
 		ap[1].comprarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (money.getMoney() >= unlockprecos[1]) {
+				if (money.getMoney() >= precos[1]) {
 					random = (int) (Math.random() * 300);
 					random2 = (int) (Math.random() * 300);
 					rancho.add(new Entity(1, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[1]);
 				}
 			}
 		});
@@ -327,16 +326,18 @@ public class GamePanel extends JPanel {
 					random2 = (int) (Math.random() * 200);
 					rancho.add(new Entity(2, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[2]);
 				}
 			}
 		});
 		ap[2].comprarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (money.getMoney() >= unlockprecos[2]) {
+				if (money.getMoney() >= precos[2]) {
 					random = (int) (Math.random() * 180);
 					random2 = (int) (Math.random() * 200);
 					rancho.add(new Entity(2, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[2]);
 				}
 			}
 		});
@@ -347,16 +348,18 @@ public class GamePanel extends JPanel {
 					random2 = (int) (Math.random() * 225);
 					rancho.add(new Entity(3, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[3]);
 				}
 			}
 		});
 		ap[3].comprarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (money.getMoney() >= unlockprecos[3]) {
+				if (money.getMoney() >= precos[3]) {
 					random = (int) (Math.random() * 225);
 					random2 = (int) (Math.random() * 225);
 					rancho.add(new Entity(3, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[3]);
 				}
 			}
 		});
@@ -367,22 +370,25 @@ public class GamePanel extends JPanel {
 					random2 = (int) (Math.random() * 200);
 					rancho.add(new Entity(4, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[4]);
 				}
 			}
 		});
 		ap[4].comprarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (money.getMoney() >= unlockprecos[4]) {
+				if (money.getMoney() >= precos[4]) {
 					random = (int) (Math.random() * 200);
 					random2 = (int) (Math.random() * 200);
 					rancho.add(new Entity(4, rancho.getWidth(), rancho.getHeight(), random, random2));
 					repaint();
+					money.updateMoney(precos[4]);
 				}
 			}
 		});
 
 		endGameBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				pgc.usersdao.atualizar(pgc.usersdao.EXCLUSAO);
 				System.exit(0);
 			}
 		});
