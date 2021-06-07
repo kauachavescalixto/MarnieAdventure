@@ -42,7 +42,7 @@ public class AnimalPanel extends JPanel {
 	private int intQntd;
 
 	private int[] precos = new int[] { 10, 15, 20, 25, 30 };
-
+	
 	private JLabel time;
 
 	private int division;
@@ -125,8 +125,6 @@ public class AnimalPanel extends JPanel {
 		unlockLb.setLocation(w - 110, 85);
 		unlockLb.setForeground(Color.white);
 		unlockLb.setFont(new Font("courier new", Font.ITALIC, 22));
-
-	
 		
 		add(unlockLb);
 		add(unlockBt);
@@ -139,12 +137,13 @@ public class AnimalPanel extends JPanel {
 		
 		unlockBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (GamePanel.money.getMoney() > unlockprecos[index]) {
-					//intQntd++;
-					//GamePanel.money.updateMoney(unlockprecos[index]);
+				if (GamePanel.money.getMoney() >= unlockprecos[index]) {
+					intQntd++;
+					GamePanel.money.updateMoney(unlockprecos[index]);
+					
 					removeAll();
 					init(index);
-					comprarBt.doClick();
+					
 					repaint();
 				} else {
 				}
@@ -260,7 +259,6 @@ public class AnimalPanel extends JPanel {
 								- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(inverted))));
 
 				inverted -= 100;
-
 				if (inverted <= 0) {
 					progresso = 0;
 					inverted = max * 1000;
@@ -278,7 +276,7 @@ public class AnimalPanel extends JPanel {
 
 		comprarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (GamePanel.money.getMoney() > precos[index]) {
+				if (GamePanel.money.getMoney() >= precos[index]) {
 					intQntd++;
 					if (intQntd >= 10) {
 						qntd.setFont(new Font("Courier New", Font.BOLD + Font.ITALIC, 34));

@@ -2,8 +2,12 @@ package marnie.graphics;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,8 +27,11 @@ public class CinematicPanel extends JPanel {
 	private int x, y, timerCount;
 	
 	public JTextField tfNome;
-
-	private JLabel messageDialog = new JLabel(new ImageIcon(getClass().getResource("MessageDialog.png")));
+	
+	public JLabel messageDialog = new JLabel(new ImageIcon(getClass().getResource("MessageDialog.png")));
+	public JButton yes;
+	public JButton no;
+	
 	
 	public CinematicPanel(int w, int h) {
 
@@ -38,21 +45,54 @@ public class CinematicPanel extends JPanel {
 
 	public void init() {
 		
-		tfNome = new JTextField();
+		yes = new JButton();
+		yes.setSize(62,21);
+		yes.setLocation(105,135);
+		yes.setContentAreaFilled(false);
 		
+		no = new JButton();
+		no.setSize(62,21);
+		no.setLocation(32,135);
+		no.setContentAreaFilled(false);
+		
+		tfNome = new JTextField();
+		tfNome.setSize(273,30);
+		tfNome.setLocation(441,413);
+		tfNome.setBackground(new Color(254,215,136));
+		tfNome.setFont(new Font("Courier new", Font.BOLD, 20));
+		tfNome.setForeground(new Color(80, 29, 17));
+		tfNome.setBorder(null);
 		
 		play = new JButton();
 
 		BG.setSize(1152, 1154);
 		animationBG();
-		play.setSize(200, 110);
+		play.setSize(205, 110);
 		play.setLocation((w / 2) - (play.getWidth() / 2), h - 180);
 		play.setContentAreaFilled(false);
+		
+		messageDialog.setSize(200,200);
+		
+		add(tfNome);
+		add(play);
+		tfNome.setVisible(false);
+		play.setVisible(false);
+		
+		add(yes);
+		add(no);
+		yes.setVisible(false);
+		no.setVisible(false);
+		
+		add(messageDialog);
+		messageDialog.setVisible(false);
+		
+		add(BG);
+		
+		
+		
 	}
 
 	public void animationBG() {
-		add(BG);
-
 		x = 0;
 		y = 0;
 		timerCount = 0;
@@ -62,13 +102,14 @@ public class CinematicPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				timerCount++;
-				if (timerCount >= 100) {
-					y -= 1;
+				if (timerCount >= 10) {
+					y -= 10;
 					BG.setLocation(x, y);
 					repaint();
 					if (y == -500) {
 						t.stop();
-						add(play);
+						tfNome.setVisible(true);
+						play.setVisible(true);
 						repaint();
 					}
 
@@ -76,7 +117,7 @@ public class CinematicPanel extends JPanel {
 
 			}
 		});
-
+		
 		t.start();
 	}
 
@@ -88,14 +129,12 @@ public class CinematicPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				timerCount++;
 				y -= 2;
 				BG.setLocation(x, y);
 				repaint();
 				if (y == -1500) {
 					t.stop();
-					add(play);
-					repaint();
+					
 				}
 
 			}

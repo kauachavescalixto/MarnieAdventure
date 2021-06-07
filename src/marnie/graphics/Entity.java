@@ -71,7 +71,7 @@ public class Entity extends JLabel {
 			public void actionPerformed(ActionEvent e) {
 
 				repaint();
-
+				
 				if (option() == 0) {
 
 					int xMove = (int) (Math.random() * 2);

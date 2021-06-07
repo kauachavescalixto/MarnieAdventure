@@ -15,7 +15,6 @@ public class BD {
 		try{
 			Class.forName(driver);
 			c = DriverManager.getConnection(url,login,senha);
-			System.out.println("Conectou");
 			return true;
 		}
 		catch (ClassNotFoundException erro){

@@ -20,13 +20,13 @@ public class UsersDAO {
 		users = new Users();
 	}
 
-	public boolean localizar() {
-		sql = "select * from tb_jogo where id=?;";
+	public boolean localizar(String nome) {
+		users.setNome(nome);
+		sql = "select * from tb_jogo where nome=?;";
 		try {
 			if(bd.getConnection()) {
 				st = bd.c.prepareStatement(sql);
-				st.setInt(1, users.getId());
-				System.out.println(st);
+				st.setString(1, users.getNome());
 				st.executeQuery();
 				rs = st.executeQuery();
 				rs.next();
@@ -65,19 +65,19 @@ public class UsersDAO {
 				st.setInt(9, users.getLogin());
 
 			} else if (operacao == ALTERACAO) {
-				sql = "update tb_jogo set id = ?, nome = ?, galinha = ?, pato = ?, vaca = ?, cabra = ?, ovelha = ?, dinheiro = ?,login = ? where id =?";
+				sql = "update tb_jogo set nome = ?, galinha = ?, pato = ?, vaca = ?, cabra = ?, ovelha = ?, dinheiro = ?,login = ? where id =?";
 				st = bd.c.prepareStatement(sql);
 
-				st.setInt(1, users.getId());
-				st.setString(2, users.getNome());
-				st.setInt(3, users.getGalinha());
-				st.setInt(4, users.getPato());
-				st.setInt(5, users.getVaca());
-				st.setInt(6, users.getCabra());
-				st.setInt(7, users.getOvelha());
-				st.setInt(8, users.getDinheiro());
-				st.setInt(9, users.getLogin());
-				st.setInt(10, users.getId());
+				//st.setInt(1, users.getId());
+				st.setString(1, users.getNome());
+				st.setInt(2, users.getGalinha());
+				st.setInt(3, users.getPato());
+				st.setInt(4, users.getVaca());
+				st.setInt(5, users.getCabra());
+				st.setInt(6, users.getOvelha());
+				st.setInt(7, users.getDinheiro());
+				st.setInt(8, users.getLogin());
+				st.setInt(9, users.getId());
 			} else if (operacao == EXCLUSAO) {
 				sql = "delete from tb_jogo where id =?";
 				st = bd.c.prepareStatement(sql);
